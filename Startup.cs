@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using practica02.Data;
+using Microsoft.EntityFrameworkCore;
 namespace practica02
 {
     public class Startup
@@ -23,7 +24,9 @@ namespace practica02
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+             
             services.AddControllersWithViews();
+             services.AddDbContext<PresentacionContext>(dco => dco.UseInMemoryDatabase("practica02"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
